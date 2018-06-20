@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  node:
+    container_name: node_server
+    build:
+      context: .
+      dockerfile: ./my-app/Dockerfile
+    volumes:
+      - .:/my-app
+    ports:
+      - "3000:3000"
+
+  django:
+    container_name: django_server
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - .:/iskmebackend
+      - .:/testdata
+    ports:
+      - "5001:8000"
